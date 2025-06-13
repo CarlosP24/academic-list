@@ -1,0 +1,132 @@
+\usepackage[backend=biber,
+           bibstyle=numeric,
+           sorting=ymdnt,
+           sortcites=true,
+           natbib=true,
+           defernumbers=true,
+           maxbibnames=99,
+           giveninits=true,
+           uniquename=false]{biblatex} 
+           
+\usepackage{xcolor}
+\usepackage[unicode=true, colorlinks=true, citecolor={blue!80!black}, urlcolor={blue!20!black}, linkcolor = {blue!20!black}]{hyperref}
+
+% Define a new annotation for highlighting: https://www.hansenlab.org/cv_bibliography_tex
+\renewcommand*{\mkbibnamegiven}[1]{
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \begingroup
+    \ifitemannotation{highlight}{\def\doformat{\textbf}}{\def\doformat{}}%
+    \doformat{#1}%
+    \ifitemannotation{first}{\textsuperscript{*}}{}%
+    \ifitemannotation{corresponding}{$^\dagger$}{}%
+  \endgroup
+}%%
+
+% Sorting backwards by year, then month, then name
+\DeclareSortingScheme{ymdnt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort[direction=descending]{
+    \field[strside=left,strwidth=4]{sortyear}
+    \field[strside=left,strwidth=4]{year}
+    \literal{9999}
+  }
+  \sort[direction=descending]{
+    \field{month}
+    \literal{9999}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+}
+
+% Reference styling
+\renewbibmacro*{journal+issuetitle}{%
+  \iffieldundef{journaltitle}
+    {}
+    {\printtext[journaltitle]{%
+       \printfield[titlecase]{journaltitle}}}%
+  \setunit*{\addspace}%
+  \printfield{volume}%
+  \setunit*{\addcomma\space}%
+  \printfield{pages}%
+  \setunit*{\addspace}%
+  \printtext{(}%
+  \printfield{year}%
+  \printtext{)}%
+}
+
+\renewbibmacro*{doi+eprint+url}{%
+  \iffieldundef{doi}
+    {}
+    {\printfield{doi}}%
+}
+
+\DeclareFieldFormat{journallink}{%
+  \iffieldundef{doi}
+    {#1}
+    {\href{https://doi.org/\thefield{doi}}{#1}}%
+}
+
+\DeclareFieldFormat{pages}{#1}
+
+% Define the bibliography driver for articles
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printtext[journallink]{%
+    \iffieldundef{shortjournal}
+      {\printfield{journaltitle}}
+      {\printfield{shortjournal}}%
+    \setunit*{\addcomma\space}%
+    \printfield{volume}%
+    \setunit*{\addcomma\space}%
+    \printfield{pages}%
+    \setunit*{\addspace}%
+    \printtext{(}%
+    \printfield{year}%
+    \printtext{)}%
+  }%
+  \finentry
+}
+
+\DeclareFieldFormat{noteyearlink}{%
+  \iffieldundef{doi}
+    {#1}
+    {\href{https://doi.org/\thefield{doi}}{#1}}%
+}
+
+% Define the bibliography driver for preprints
+
+\DeclareBibliographyDriver{misc}{%
+  \printnames{author}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield{title}%
+  \setunit{\addcomma\space}%
+  \printtext[noteyearlink]{%
+    \printfield{note}%
+    \setunit*{\addspace}%
+    \printtext{(}%
+    \printfield{year}%
+    \printtext{)}%
+  }%
+  \finentry
+}

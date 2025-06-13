@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\input{../src/latex/publication_list.tex}
+
+\addbibresource{output.bib}
+
+\begin{document}
+\section{Fancy Publications}
+\defbibnote{mynote}{$^*$ indicates first theory author.}
+\nocite{*}
+\printbibliography[heading=subbibliography,title=Preprints,keyword=preprint]
+
+\printbibliography[heading=subbibliography,title=Journals,prenote=mynote,keyword=journal]
+
+\end{document}
