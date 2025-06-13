@@ -26,3 +26,9 @@ The reference format is similar to the APS standard.
 Your public Zotero library can be accessed at `https://api.zotero.org/users/<user_id>/publications/items?format=bibtex`. Find your `<user_id>` at https://www.zotero.org/settings/security#applications.
 
 Check the example in `example_port_Zotero.sh`.
+
+### TSV port
+Generates a conference list from a TSV file, classifying them according to the type of contribution: attended, poster, contributed or invited.
+
+First, run `example_port_tsv.sh` to generate a `js` file with the conferences metadata. Then, `example_port_tsv.html` will render this list for a website.
+When generating the LaTeX file in `example_port_Zotero.sh`, this `js` fil is also used to generate the conference list.

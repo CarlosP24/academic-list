@@ -3,13 +3,25 @@
 \input{../src/latex/publication_list.tex}
 
 \addbibresource{output.bib}
+\addbibresource{table.bib}
 
 \begin{document}
 \section{Fancy Publications}
 \defbibnote{mynote}{$^*$ indicates first theory author.}
-\nocite{*}
-\printbibliography[heading=subbibliography,title=Preprints,keyword=preprint]
 
-\printbibliography[heading=subbibliography,title=Journals,prenote=mynote,keyword=journal]
+% Bibliography from output.bib only
+\begin{refsection}[output.bib]
+\nocite{*}
+\printbibliography[heading=subbibliography,title=Publications,keyword=preprint]
+\printbibliography[heading=subbibliography,title=Publications,keyword=journal,prenote=mynote]
+
+\end{refsection}
+
+\section{Fancy Conferences}
+% Bibliography from table.bib only
+\begin{refsection}[table.bib]
+\nocite{*}
+\printbibliography[heading=subbibliography,title=Conferences]
+\end{refsection}
 
 \end{document}

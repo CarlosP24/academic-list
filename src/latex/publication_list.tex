@@ -25,6 +25,8 @@
   \endgroup
 }%%
 
+
+
 % Sorting backwards by year, then month, then name
 \DeclareSortingScheme{ymdnt}{
   \sort{
@@ -130,3 +132,41 @@
   }%
   \finentry
 }
+
+\DeclareFieldFormat
+  [unpublished]
+  {date}{\textbf{#1\isdot}}
+
+
+\DeclareBibliographyDriver{unpublished}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \newunit\newblock
+  \usebibmacro{location+date}%
+  \usebibmacro{author}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}

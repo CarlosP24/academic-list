@@ -1,0 +1,16 @@
+{
+  "name": "academic-list",
+  "version": "1.0.0",
+  "description": "Scripts for converting TSV to JS for academic lists",
+  "main": "src/private_ports/generate_js_from_tsv.js",
+  "type": "module",
+  "scripts": {
+    "generate-js-from-tsv": "node src/private_ports/generate_js_from_tsv.js examples/table.tsv examples/table.js"
+  },
+  "bin": {
+    "generate_js_from_tsv": "./src/private_ports/generate_js_from_tsv.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}

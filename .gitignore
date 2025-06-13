@@ -1,3 +1,4 @@
 examples/venv
 examples/output.bib
 examples/*.pdf
+examples/package-lock.json
