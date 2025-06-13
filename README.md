@@ -32,3 +32,7 @@ Generates a conference list from a TSV file, classifying them according to the t
 
 First, run `example_port_tsv.sh` to generate a `js` file with the conferences metadata. Then, `example_port_tsv.html` will render this list for a website.
 When generating the LaTeX file in `example_port_Zotero.sh`, this `js` fil is also used to generate the conference list.
+
+## References
+The base for the arXiv port is the arXiv extension [myarticles](https://arxiv.org/help/myarticles).
+For the .bib styles, I used some code from [hasenlab](https://www.hansenlab.org/cv_bibliography_tex).

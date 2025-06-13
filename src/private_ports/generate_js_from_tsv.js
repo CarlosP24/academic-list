@@ -1,5 +1,27 @@
 #!/usr/bin/env node
 
+// generate_js_from_tsv.js
+//
+// This script converts a TSV (tab-separated values) file to a JSONP-style JavaScript file
+// for use with dynamic publication/talk/event lists in web pages.
+// It reads a TSV file, converts each row to an object, and writes a JS file that calls
+// a callback function (e.g., tableFeed or talksFeed) with the data.
+//
+// Copyright (C) 2025  Carlos Payá
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 const fs = require('fs');
 const path = require('path');
 

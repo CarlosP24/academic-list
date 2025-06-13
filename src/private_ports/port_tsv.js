@@ -1,3 +1,24 @@
+// port_tsv.js
+//
+// This script dynamically loads and displays a formatted list of talks or events from a JSONP-style data file (e.g., table.js).
+// It categorizes entries by type (invited, contributed, poster, attended), formats details, and provides links to PDFs and references.
+// Designed for embedding in web pages with minimal configuration.
+//
+// Copyright (C) 2025  Carlos Payá
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 function manageDefaults() {
     if (typeof talks_includeDescription === 'undefined') {
         talks_includeDescription = 0;
