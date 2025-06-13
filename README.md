@@ -23,6 +23,6 @@ Takes your Zotero public publication list (or any .bib) and generates a .bib fil
 
 The reference format is similar to the APS standard.
 
-Your public Zotero library can be accessed at `https://api.zotero.org/users/<user_id>/publications/items?format=bibtex`. Find your `<usrer_id>` at https://www.zotero.org/settings/security#applications.
+Your public Zotero library can be accessed at `https://api.zotero.org/users/<user_id>/publications/items?format=bibtex`. Find your `<user_id>` at https://www.zotero.org/settings/security#applications.
 
 Check the example in `example_port_Zotero.sh`.
